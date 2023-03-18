@@ -5,6 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-employee-form',
@@ -15,7 +17,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
+    NgxMaskDirective,
+    RouterModule,
   ],
+  providers: [provideNgxMask()],
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.scss'],
 })
