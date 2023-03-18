@@ -5,9 +5,9 @@ import {
   EmployeeTableComponent,
   TableColumns,
 } from './employee-table/employee-table.component';
-import { Observable } from 'rxjs';
 
 export type Employee = {
+  id: number;
   name: string;
   jobRole: string;
   salary: number;
@@ -30,5 +30,4 @@ export default class EmployeeListComponent {
     { column: 'Nascimento', key: 'birthDate' },
     { column: 'Registro', key: 'registry' },
   ];
-
 }
