@@ -9,6 +9,7 @@ import {
   Employee,
   EmployeeStateService,
 } from 'src/app/states/employee-state.service';
+import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -26,27 +27,22 @@ export default class EmployeeListComponent implements OnInit {
     { column: 'Registro', key: 'registry' },
   ];
 
-  constructor(public state: EmployeeStateService) {}
+  constructor(
+    public state: EmployeeStateService,
+    private service: EmployeeService
+  ) {}
 
   ngOnInit(): void {
-    this.state.addEmployee([
-      {
-        id: 1,
-        name: 'Paulo',
-        jobRole: 'Programador',
-        birthDate: '2021/03/21',
-        registry: 4342,
-        salary: 40400,
+    this.findAllEmployees()
+  }
+
+  findAllEmployees() {
+    this.service.findAllEmployees().subscribe({
+      next: (employees) => {       
+        console.log(employees);
+        
+        this.state.addEmployee(employees);
       },
-      
-      {
-        id: 2,
-        name: 'Paulo',
-        jobRole: 'Programador',
-        birthDate: '2021/03/21',
-        registry: 4342,
-        salary: 40400,
-      },
-    ]);
+    });
   }
 }
