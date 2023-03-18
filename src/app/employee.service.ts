@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { Employee } from './states/employee-state.service';
+import { converStringToISO8601 } from './utils/convertDateToISO';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +28,10 @@ export class EmployeeService {
 
   deleteEmployee(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.api}/employees/${id}`);
+  }
+
+  createEmployee(employee: Employee): Observable<void> {
+    employee.birthDate = converStringToISO8601(employee.birthDate);
+    return this.http.post<void>(`${environment.api}/employees`, employee);
   }
 }
