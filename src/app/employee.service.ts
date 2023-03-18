@@ -34,4 +34,8 @@ export class EmployeeService {
     employee.birthDate = converStringToISO8601(employee.birthDate);
     return this.http.post<void>(`${environment.api}/employees`, employee);
   }
+
+  findEmployee(id: string): Observable<Employee> {
+    return this.http.get<Employee>(`${environment.api}/employees/${id}`);
+  }
 }
