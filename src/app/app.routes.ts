@@ -12,4 +12,9 @@ export const appRoutes: Routes = [
     loadComponent: () =>
       import('./pages/employee-form/employee-form.component'),
   },
+  {
+    path: 'edit-employee/:id',
+    loadComponent: () =>
+      import('./pages/employee-form/employee-form.component'),
+  },
 ];
