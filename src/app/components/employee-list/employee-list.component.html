@@ -1,4 +1,5 @@
 <app-employee-table
   [tableColumns]="tableColumns"
   [data]="state.employees$ | async"
+  (onDeleteEmployee)="removeEmployee($event)"
 ></app-employee-table>

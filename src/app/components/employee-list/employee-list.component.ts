@@ -10,6 +10,7 @@ import {
   EmployeeStateService,
 } from 'src/app/states/employee-state.service';
 import { EmployeeService } from 'src/app/employee.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee-list',
@@ -33,16 +34,35 @@ export default class EmployeeListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.findAllEmployees()
+    this.findAllEmployees();
   }
 
-  findAllEmployees() {
+  findAllEmployees(): void {
     this.service.findAllEmployees().subscribe({
-      next: (employees) => {       
-        console.log(employees);
-        
-        this.state.addEmployee(employees);
-      },
+      next: (employees) => this.state.addEmployee(employees),
+    });
+  }
+
+  removeEmployee(employee: Employee): void {
+    Swal.fire({
+      title: `Tem certeza que deseja excluir o funcionário ${employee.name}?`,
+      confirmButtonText: 'Excluir',
+      showDenyButton: true,
+      denyButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.deleteEmployee(employee.id).subscribe({
+          next: (response) => {
+            Swal.fire('Funcionario deletado com sucesso!', '', 'success');
+            this.state.removeEmployee(employee);
+          },
+          error: (error) => {
+            Swal.fire(`${error.error.message}`, '', 'error');
+          },
+        });
+      } else if (result.isDenied) {
+        Swal.fire('Operação cancelada', '', 'info');
+      }
     });
   }
 }
