@@ -3,11 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'list', pathMatch: 'full' },
-  { path: 'list', loadComponent: () => import('./components/employee-list/employee-list.component')}
+  {
+    path: 'list',
+    loadComponent: () =>
+      import('./pages/employee-list/employee-list.component'),
+  },
+  {
+    path: 'add-employee',
+    loadComponent: () =>
+      import('./pages/employee-form/employee-form.component'),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
