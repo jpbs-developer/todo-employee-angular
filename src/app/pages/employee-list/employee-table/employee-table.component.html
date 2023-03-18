@@ -8,7 +8,14 @@
   <ng-container [matColumnDef]="'actions'">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element">
-      <button mat-flat-button color="primary" class="mr-2">Editar</button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="mr-2"
+        [routerLink]="['/edit-employee', element.id]"
+      >
+        Editar
+      </button>
       <button mat-flat-button color="warn" (click)="deleteEmployee(element)">
         Excluir
       </button>
@@ -16,8 +23,10 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columns"></tr>
-  <tr mat-row class="row" *matRowDef="let row; columns: columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns"></tr>
   <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell text-center text-lg font-medium pt-5" colspan="6">Nenhum funcionário cadastrado</td>
+    <td class="mat-cell text-center text-lg font-medium pt-5" colspan="6">
+      Nenhum funcionário cadastrado
+    </td>
   </tr>
 </table>
