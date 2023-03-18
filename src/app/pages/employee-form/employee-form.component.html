@@ -1,4 +1,8 @@
-<form class="shadow-xl p-5" [formGroup]="employeeForm">
+<form
+  class="shadow-xl p-5"
+  [formGroup]="employeeForm"
+  (submit)="saveEmployee()"
+>
   <mat-form-field>
     <mat-label>Nome</mat-label>
     <input type="text" formControlName="name" matInput />
@@ -29,9 +33,16 @@
   <mat-form-field>
     <mat-label>Registro</mat-label>
     <input type="text" formControlName="registry" mask="0*" matInput />
-    <mat-error *ngIf="employeeForm.get('registry')?.hasError('required')">Campo obrigatório</mat-error>
+    <mat-error *ngIf="employeeForm.get('registry')?.hasError('required')"
+      >Campo obrigatório</mat-error
+    >
   </mat-form-field>
-  <button mat-flat-button color="primary" [disabled]="employeeForm.invalid" class="mr-2 mt-2">
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="employeeForm.invalid"
+    class="mr-2 mt-2"
+  >
     Salvar funcionário
   </button>
 </form>
