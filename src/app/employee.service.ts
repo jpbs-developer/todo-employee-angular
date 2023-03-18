@@ -24,4 +24,8 @@ export class EmployeeService {
       })
     );
   }
+
+  deleteEmployee(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.api}/employees/${id}`);
+  }
 }
