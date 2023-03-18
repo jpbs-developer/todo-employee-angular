@@ -1,11 +1,13 @@
-<form class="shadow-xl p-5">
+<form class="shadow-xl p-5" [formGroup]="employeeForm">
   <mat-form-field>
     <mat-label>Nome</mat-label>
-    <input type="text" matInput />
+    <input type="text" formControlName="name" matInput />
+    <mat-error>Campo obrigatório</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Profissão</mat-label>
-    <input type="text" matInput />
+    <input type="text" formControlName="jobRole" matInput />
+    <mat-error>Campo obrigatório</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Salário</mat-label>
@@ -13,19 +15,23 @@
       type="text"
       prefix="R$ "
       mask="separator.2"
+      formControlName="salary"
       [thousandSeparator]="','"
       matInput
     />
+    <mat-error>Campo obrigatório</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Nascimento</mat-label>
-    <input type="text" mask="00/00/0000" matInput />
+    <input type="text" formControlName="birthDate" mask="00/00/0000" matInput />
+    <mat-error>Campo obrigatório</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Registro</mat-label>
-    <input type="text" mask="0*" matInput />
+    <input type="text" formControlName="registry" mask="0*" matInput />
+    <mat-error *ngIf="employeeForm.get('registry')?.hasError('required')">Campo obrigatório</mat-error>
   </mat-form-field>
-  <button mat-flat-button color="primary" class="mr-2">
+  <button mat-flat-button color="primary" [disabled]="employeeForm.invalid" class="mr-2 mt-2">
     Salvar funcionário
   </button>
 </form>
