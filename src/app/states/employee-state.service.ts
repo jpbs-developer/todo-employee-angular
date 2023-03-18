@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 export type Employee = {
-  id: number;
+  id: string;
   name: string;
   jobRole: string;
   salary: number;
@@ -28,4 +28,11 @@ export class EmployeeStateService {
         this.employeesSubject$.next([...currentEmployees, employee]);
     }
   }
+
+  removeEmployee(employee: Employee): void { 
+    const currentEmployees = this.employeesSubject$.getValue();
+    const filteredEmployees = currentEmployees.filter((employeeFilter) => employeeFilter.id !== employee.id)
+    this.employeesSubject$.next([...filteredEmployees])
+  }
+
 }
