@@ -9,7 +9,7 @@
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element" >
       <button mat-flat-button color="primary" class="mr-2">Editar</button>
-      <button mat-flat-button color="warn">Excluir</button>
+      <button mat-flat-button color="warn" (click)="deleteEmployee(element)">Excluir</button>
     </td>
   </ng-container>
 
