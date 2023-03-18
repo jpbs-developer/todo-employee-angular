@@ -18,12 +18,14 @@ export class EmployeeStateService {
   constructor() {}
 
   addEmployee(employees: Employee[]): void {
-    this.employeesSubject$.next([])
+    this.employeesSubject$.next([]);
     for (let employee of employees) {
       const currentEmployees = this.employeesSubject$.getValue();
-      const employeeExists = currentEmployees.find((employeeFilter) => employeeFilter.id === employee.id );
-      !employeeExists && this.employeesSubject$.next([...currentEmployees, employee]);
+      const employeeExists = currentEmployees.find(
+        (employeeFilter) => employeeFilter.id === employee.id
+      );
+      !employeeExists &&
+        this.employeesSubject$.next([...currentEmployees, employee]);
     }
-    console.log(this.employeesSubject$.getValue());
   }
 }
