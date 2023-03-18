@@ -35,6 +35,10 @@ export class EmployeeService {
     return this.http.post<void>(`${environment.api}/employees`, employee);
   }
 
+  updateEmployee(id: string, employee: Employee): Observable<Employee> {
+    return this.http.put<Employee>(`${environment.api}/employees/${id}`, employee);
+  }
+
   findEmployee(id: string): Observable<Employee> {
     return this.http.get<Employee>(`${environment.api}/employees/${id}`);
   }

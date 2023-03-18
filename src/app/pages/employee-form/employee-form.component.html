@@ -1,7 +1,7 @@
 <form
   class="shadow-xl p-5"
   [formGroup]="employeeForm"
-  (submit)="saveEmployee()"
+  (submit)="employeeId ? updateEmployee() : saveEmployee()"
 >
   <mat-form-field>
     <mat-label>Nome</mat-label>
@@ -43,6 +43,6 @@
     [disabled]="employeeForm.invalid"
     class="mr-2 mt-2"
   >
-    Salvar funcionário
+    {{ employeeId ? "Atualizar" : "Salvar" }} funcionário
   </button>
 </form>

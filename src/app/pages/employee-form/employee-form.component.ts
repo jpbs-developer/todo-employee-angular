@@ -81,4 +81,28 @@ export default class EmployeeFormComponent implements OnInit {
       error: (error) => Swal.fire(`${error.error.message}`, '', 'error'),
     });
   }
+
+  updateEmployee() {
+    const employee = this.employeeForm.value;
+    Swal.fire({
+      title: `Tem certeza que deseja atualizar o funcionário?`,
+      confirmButtonText: 'Atualizar',
+      showDenyButton: true,
+      denyButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.updateEmployee(this.employeeId, employee).subscribe({
+          next: (employee) => {
+            Swal.fire('Funcionario atualizado com sucesso!', '', 'success');
+            this.employeeForm.patchValue(employee);
+          },
+          error: (error) => {
+            Swal.fire(`${error.error.message}`, '', 'error');
+          },
+        });
+      } else if (result.isDenied) {
+        Swal.fire('Operação cancelada', '', 'info');
+      }
+    });
+  }
 }
