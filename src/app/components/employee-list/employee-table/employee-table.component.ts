@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
-import { Employee } from '../employee-list.component';
+import { Employee } from 'src/app/states/employee-state.service';
 export interface TableColumns {
   column: string;
   key: string;
@@ -23,7 +23,7 @@ export interface TableColumns {
 })
 export class EmployeeTableComponent implements OnChanges {
   @ViewChild(MatSort) sort!: MatSort;
-  @Input() data: Employee[] = [];
+  @Input() data: Employee[] | null = [];
   @Input() filter: string = '';
   @Input() tableColumns: TableColumns[] = [];
   columns: string[] = [];
@@ -36,7 +36,7 @@ export class EmployeeTableComponent implements OnChanges {
       ...this.tableColumns.map((column) => column.key),
       'actions',
     ];
-    this.dataSource = new MatTableDataSource(this.data);
+    this.dataSource = new MatTableDataSource(this.data as Employee[]);
     if (changes['filter']) {
       this.applyFilter(this.filter);
     }

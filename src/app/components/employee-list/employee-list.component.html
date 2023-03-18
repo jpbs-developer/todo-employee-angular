@@ -1,1 +1,4 @@
-<app-employee-table [tableColumns]="tableColumns"></app-employee-table>
+<app-employee-table
+  [tableColumns]="tableColumns"
+  [data]="state.employees$ | async"
+></app-employee-table>
