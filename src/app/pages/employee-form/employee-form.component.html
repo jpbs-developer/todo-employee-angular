@@ -9,15 +9,21 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Salário</mat-label>
-    <input type="text" matInput />
+    <input
+      type="text"
+      prefix="R$ "
+      mask="separator.2"
+      [thousandSeparator]="','"
+      matInput
+    />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Nascimento</mat-label>
-    <input type="text" matInput />
+    <input type="text" mask="00/00/0000" matInput />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Registro</mat-label>
-    <input type="text" matInput />
+    <input type="text" mask="0*" matInput />
   </mat-form-field>
   <button mat-flat-button color="primary" class="mr-2">
     Salvar funcionário
