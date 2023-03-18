@@ -12,6 +12,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { Employee } from 'src/app/states/employee-state.service';
+import { RouterModule } from '@angular/router';
 export interface TableColumns {
   column: string;
   key: string;
@@ -19,7 +20,7 @@ export interface TableColumns {
 @Component({
   selector: 'app-employee-table',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatSortModule, MatButtonModule],
+  imports: [CommonModule, MatTableModule, MatSortModule, MatButtonModule, RouterModule],
   templateUrl: './employee-table.component.html',
   styleUrls: ['./employee-table.component.scss'],
 })
