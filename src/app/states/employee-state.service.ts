@@ -29,10 +29,18 @@ export class EmployeeStateService {
     }
   }
 
-  removeEmployee(employee: Employee): void { 
+  removeEmployee(employee: Employee): void {
     const currentEmployees = this.employeesSubject$.getValue();
-    const filteredEmployees = currentEmployees.filter((employeeFilter) => employeeFilter.id !== employee.id)
-    this.employeesSubject$.next([...filteredEmployees])
+    const filteredEmployees = currentEmployees.filter(
+      (employeeFilter) => employeeFilter.id !== employee.id
+    );
+    this.employeesSubject$.next([...filteredEmployees]);
   }
 
+  findEmployee(employee: Employee): Employee {
+    const currentEmployees = this.employeesSubject$.getValue();
+    const employeeData = currentEmployees.find(employeeData => employeeData.id === employee.id);
+    if(!employeeData) throw new Error(`Employee ${employee} not found`);
+    return employeeData
+  }
 }
