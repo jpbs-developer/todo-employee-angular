@@ -1,7 +1,9 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
+  Output,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -22,6 +24,7 @@ export interface TableColumns {
   styleUrls: ['./employee-table.component.scss'],
 })
 export class EmployeeTableComponent implements OnChanges {
+  @Output() onDeleteEmployee = new EventEmitter<Employee>();
   @ViewChild(MatSort) sort!: MatSort;
   @Input() data: Employee[] | null = [];
   @Input() filter: string = '';
@@ -47,6 +50,10 @@ export class EmployeeTableComponent implements OnChanges {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  deleteEmployee(employee: Employee): void {
+    this.onDeleteEmployee.emit(employee);
   }
 
   ngAfterViewInit() {
