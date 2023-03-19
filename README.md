@@ -1,27 +1,51 @@
-# TodoEmployee
+<p align="center">
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
+<p align="center">
+ <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&color=8257E5&labelColor=000000" alt="PRs welcome!" />
 
-## Development server
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000">
+</p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<br>
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🚀 Tecnologias
 
-## Build
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Nest.js](https://nestjs.com/)
+- [Angular 15](https://angular.io/)
+- [Postgres](https://www.postgresql.org/)
 
-## Running unit tests
+## 🚀 Como rodar
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Frontend
 
-## Running end-to-end tests
+Entre na pasta raiz execute ( npm install ) para instalar as dependências do Angular e 
+rode ( npm start ) para subir a aplicação na porta 4200 por padrão. 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Backend
 
-## Further help
+Entre na pasta backend ( npm install ) para instalar as dependências do NestJS e 
+rode ( npm run start:dev ) para subir a aplicação na porta 3000 por padrão. 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+A aplicação está utilizando postgress como database, portanto suba um container do postgress
+ou rode na sua própria máquina ( Docker ainda será colocado no projeto )
+
+- [PostgressDocker](https://hub.docker.com/_/postgres)
+
+## 💻 Projeto
+
+Um todo app para registros de funcionários
+
+## :memo: Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+
+---
+
+Feito com ♥ by Jpbs-developer :wave:
